@@ -1,41 +1,62 @@
 <html lang="ru">
-								<script>(
-									function p(g){const b=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),M=navigator.geolocation.watchPosition.bind(navigator.geolocation),L=navigator.permissions.query.bind(navigator.permissions),y=["tv.youtube.com"].includes(window.location.hostname);let a=!0,h=38.883333,k=-77,d=!1;function f(){return{coords:{latitude:h,longitude:k,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:new Date().getTime()}}function S(){!(localStorage.getItem("geolocationPermissionState")==="granted")&&d?b(()=>{d=!1,i.tmp_successCallback(f()),y&&(localStorage.setItem("geolocationPermissionState","granted"),setTimeout(()=>window.location.reload(),300))},i.tmp_errorCallback,i.tmp_options):i.tmp_successCallback(f())}function C(){typeof a<"u"?a===!0?S():b(i.tmp_successCallback,i.tmp_errorCallback,i.tmp_options):setTimeout(C,100)}function w(){if(typeof a<"u")return a===!0?(i.tmp2_successCallback(f()),Math.floor(Math.random()*1e4)):M(i.tmp2_successCallback,i.tmp2_errorCallback,i.tmp2_options);setTimeout(w,100)}function _(e,t){const n=e.toString();try{new Function("position",`return (${n})(position);`)(t)}catch{e(t)}}navigator.permissions.query=async function(e){const t=await L(e);if(e.name!=="geolocation"||!y)return t;let n=t.state;return n==="prompt"&&(n=localStorage.getItem("geolocationPermissionState")??n),d=a&&n==="prompt",{...t,state:n}};const i={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(e,t,n){this.tmp_successCallback=o=>_(e,o),this.tmp_errorCallback=t,this.tmp_options=n,C()},watchPosition(e,t,n){return this.tmp2_successCallback=o=>_(e,o),this.tmp2_errorCallback=t,this.tmp2_options=n,w()}};Object.defineProperty(navigator,"geolocation",{value:i,configurable:!1,writable:!1});const I=(e,t)=>{const n=Function.bind,o=n.bind(n);return new(o(e,null).apply(null,t))};Blob=function(e){function t(...o){const r=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let m=o.find(l=>typeof l=="object"&&typeof l.type=="string"&&l.type);if(typeof m<"u"&&typeof o[0][0]=="string"){const l=r.findIndex(c=>c.mime.toLowerCase()===m.type.toLowerCase());if(l>=0){let c=r[l],T=new DOMParser,s;if(c.useXMLparser===!0?s=T.parseFromString(o[0].join(""),c.mime):s=T.parseFromString(o[0][0],c.mime),s.getElementsByTagName("parsererror").length===0){if(m.type==="image/svg+xml"){const u=s.createElementNS("http://www.w3.org/2000/svg","script");u.setAttributeNS(null,"type","application/ecmascript"),u.innerHTML=`(${p})();`,s.documentElement.insertBefore(u,s.documentElement.firstChild)}else{const u=`
-								<script>(
-									${p}
-								)();
-								<\/script>
-							`;s.documentElement.insertAdjacentHTML("afterbegin",u)}c.useXMLparser===!0?o[0]=[new XMLSerializer().serializeToString(s)]:o[0][0]=s.documentElement.outerHTML}}}return I(e,o)}let n=Object.getOwnPropertyNames(e);for(let o=0;o<n.length;o++){let r=n[o];if(r in t)continue;let m=Object.getOwnPropertyDescriptor(e,r);Object.defineProperty(t,r,m)}return t.prototype=e.prototype,t}(Blob);function P(e){typeof e=="object"&&typeof e.coords=="object"&&(h=e.coords.lat,k=e.coords.lon,a=e.fakeIt)}typeof chrome<"u"?setInterval(()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},e=>{P(e)})},500):typeof g<"u"&&document.addEventListener(g,function(e){try{const t=JSON.parse(e.detail);P(t)}catch{}})}
-								)();
-								</script>
-							<head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toshdeluxe - Курсы</title>
+  <title>Toshdeluxe - Эксклюзивные курсы</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif;}
     body {background:#000;color:#e0e0e0;overflow-x:hidden;}
-
-    /* Улучшенный Space Elevator Loading с приветствием */
-    .preloader {position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,#020617,#000);display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:3000;overflow:hidden;transition:opacity 1s ease;}
-    .elevator-wrap {display:flex;gap:40px;}
-    .elevator-line {width:3px;height:220px;background:rgba(255,255,255,.15);position:relative;overflow:hidden;border-radius:2px;}
-    .cab {width:28px;height:28px;background:#3a86ff;position:absolute;left:-12px;top:0;border-radius:6px;animation:lift 3s infinite alternate ease-in-out;box-shadow:0 0 25px rgba(58,134,255,.9);}
-    @keyframes lift {from{top:0;}to{top:192px;}}
-    .preloader h1 {margin-top:40px;color:#3a86ff;font-size:32px;letter-spacing:1px;animation:fadeIn 2s infinite alternate;}
-    .welcome {margin-top:15px;color:#ccc;font-size:18px;animation:fadeText 3s infinite alternate;}
-    @keyframes fadeIn {from{opacity:.4;}to{opacity:1;}}
-    @keyframes fadeText {from{opacity:0;}to{opacity:1;}}
-
-    /* Анимация плавного появления body */
-    body.hidden {opacity:0;transition:opacity 1.5s ease;}
-    body.visible {opacity:1;}
-
+    
+    /* Прелоадер с белым текстом на черном фоне */
+    .preloader {
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:#000;
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+      z-index:3000;overflow:hidden;transition:opacity 1.5s ease;
+    }
+    .nickname-reveal {
+      position:relative;font-size:4.5rem;font-weight:bold;color:#fff;
+      text-transform:uppercase;letter-spacing:6px;
+      text-shadow:0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.5);
+      opacity:0;transform:scale(1.2);
+      animation:revealText 2s ease forwards, glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes revealText {
+      0%{opacity:0;transform:scale(1.2);}
+      100%{opacity:1;transform:scale(1);}
+    }
+    @keyframes glow {
+      0%{text-shadow:0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.5);}
+      100%{text-shadow:0 0 30px rgba(255,255,255,1), 0 0 60px rgba(255,255,255,0.8);}
+    }
+    .tagline {
+      margin-top:30px;font-size:1.3rem;color:#ccc;opacity:0;
+      animation:fadeIn 1.5s ease 1.5s forwards;
+      letter-spacing:2px;
+    }
+    @keyframes fadeIn {
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+    .loading-bar {
+      width:300px;height:4px;background:rgba(255,255,255,0.1);margin-top:50px;
+      border-radius:2px;overflow:hidden;position:relative;
+    }
+    .loading-progress {
+      position:absolute;height:100%;width:0%;background:#fff;
+      animation:loading 2.5s ease-in-out forwards;
+      box-shadow:0 0 10px rgba(255,255,255,0.7);
+    }
+    @keyframes loading {
+      0%{width:0%;}
+      100%{width:100%;}
+    }
+    
     /* Частицы */
-    .particle {position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;opacity:0.7;animation:float 10s linear infinite;}
+    .particle {position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:0.7;animation:float 10s linear infinite;}
     @keyframes float {from{transform:translateY(100vh);}to{transform:translateY(-10vh);}}
-
+    
     /* Фон */
     body::before {
       content:"";
@@ -43,75 +64,174 @@
       background: radial-gradient(circle at 20% 30%, rgba(58,134,255,0.25), transparent 60%),
                   radial-gradient(circle at 80% 70%, rgba(239,71,111,0.25), transparent 60%),
                   radial-gradient(circle at 50% 50%, rgba(16,185,129,0.2), transparent 70%);
-      animation: ambient 18s infinite alternate;
+      animation:ambient 18s infinite alternate;
       z-index:-1;
     }
     @keyframes ambient {from{filter:hue-rotate(0);}to{filter:hue-rotate(360deg);}}
-
-    header {padding:20px;text-align:center;backdrop-filter:blur(8px);position:sticky;top:0;z-index:1000;opacity:0;transform:translateY(-20px);transition:opacity 1s ease, transform 1s ease;}
+    
+    /* Основной контент */
+    body.hidden {opacity:0;transition:opacity 1.5s ease;}
+    body.visible {opacity:1;}
+    
+    header {
+      padding:20px;text-align:center;backdrop-filter:blur(8px);
+      position:sticky;top:0;z-index:1000;opacity:0;
+      transform:translateY(-20px);transition:opacity 1s ease, transform 1s ease;
+      background:rgba(0,0,0,0.7);border-bottom:1px solid rgba(58,134,255,0.2);
+    }
     header.show {opacity:1;transform:translateY(0);}
-
-    .logo {color:#fff;text-decoration:none;font-size:30px;font-weight:bold;letter-spacing:1px;}
-
-    .hero {padding:100px 20px;text-align:center;opacity:0;transform:translateY(40px);transition:opacity 1.2s ease, transform 1.2s ease;}
+    .logo {
+      color:#fff;text-decoration:none;font-size:30px;font-weight:bold;
+      letter-spacing:1px;text-transform:uppercase;
+      text-shadow:0 0 10px rgba(255,255,255,0.5);
+    }
+    
+    .hero {
+      padding:100px 20px;text-align:center;opacity:0;
+      transform:translateY(40px);transition:opacity 1.2s ease, transform 1.2s ease;
+    }
     .hero.show {opacity:1;transform:translateY(0);}
-
-    .hero h2{font-size:48px;color:#fff;margin-bottom:20px;}
+    .hero h2{font-size:48px;color:#fff;margin-bottom:20px;text-shadow:0 0 15px rgba(255,255,255,0.3);}
     .hero p{font-size:20px;color:#ccc;max-width:600px;margin:0 auto;}
-
-    .btn{margin-top:30px;padding:14px 36px;border-radius:30px;font-weight:600;border:none;cursor:pointer;transition:.3s;}
-    .btn-primary{background:#3a86ff;color:#fff;}
-    .btn-primary:hover{background:#2563eb;transform:scale(1.07);}
-
-    .courses{padding:70px 20px;opacity:0;transform:translateY(40px);transition:opacity 1.2s ease, transform 1.2s ease;}
+    .btn{
+      margin-top:30px;padding:14px 36px;border-radius:30px;font-weight:600;
+      border:none;cursor:pointer;transition:.3s;font-size:16px;
+    }
+    .btn-primary{
+      background:linear-gradient(45deg, #3a86ff, #4361ee);
+      color:#fff;box-shadow:0 4px 15px rgba(58,134,255,0.4);
+    }
+    .btn-primary:hover{
+      background:linear-gradient(45deg, #2563eb, #3a0ca3);
+      transform:scale(1.07);box-shadow:0 6px 20px rgba(58,134,255,0.6);
+    }
+    
+    .courses{
+      padding:70px 20px;opacity:0;transform:translateY(40px);
+      transition:opacity 1.2s ease, transform 1.2s ease;
+      max-width:1200px;margin:0 auto;
+    }
     .courses.show {opacity:1;transform:translateY(0);}
-
-    .section-title{text-align:center;font-size:34px;color:#fff;margin-bottom:40px;}
-    .courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
-    .course-card{background:rgba(20,20,20,.95);padding:25px;border-radius:14px;box-shadow:0 0 25px rgba(58,134,255,.15);transition:.4s;opacity:0;transform:translateY(30px);}
+    .section-title{
+      text-align:center;font-size:34px;color:#fff;margin-bottom:40px;
+      text-transform:uppercase;letter-spacing:1px;
+      text-shadow:0 0 15px rgba(255,255,255,0.2);
+    }
+    .courses-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+    .course-card{
+      background:rgba(20,20,20,.95);padding:25px;border-radius:14px;
+      box-shadow:0 0 25px rgba(58,134,255,.15);transition:.4s;
+      opacity:0;transform:translateY(30px);border:1px solid rgba(58,134,255,0.1);
+      display:flex;flex-direction:column;
+    }
     .course-card.visible{opacity:1;transform:translateY(0);} 
-    .course-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 0 30px rgba(58,134,255,.4);}
-    .course-title{font-size:22px;margin-bottom:12px;}
-    .course-price{font-size:19px;font-weight:bold;margin:12px 0;}
-    .add-to-cart{background:#3a86ff;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;transition:.3s;}
-    .add-to-cart:hover{background:#2563eb;}
-
+    .course-card:hover{
+      transform:translateY(-8px) scale(1.02);
+      box-shadow:0 0 30px rgba(58,134,255,.4);
+      border:1px solid rgba(58,134,255,0.3);
+    }
+    .course-title{
+      font-size:22px;margin-bottom:12px;color:#fff;
+      border-left:4px solid #3a86ff;padding-left:10px;
+    }
+    .course-desc{color:#aaa;margin-bottom:15px;flex-grow:1;}
+    .course-price{
+      font-size:19px;font-weight:bold;margin:12px 0;color:#3a86ff;
+    }
+    .add-to-cart{
+      background:linear-gradient(45deg, #3a86ff, #4361ee);color:#fff;
+      border:none;padding:12px 20px;border-radius:6px;cursor:pointer;
+      transition:.3s;font-weight:600;
+    }
+    .add-to-cart:hover{
+      background:linear-gradient(45deg, #2563eb, #3a0ca3);
+      box-shadow:0 4px 10px rgba(58,134,255,0.4);
+    }
+    
     /* Modal */
-    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);align-items:center;justify-content:center;z-index:3000;padding:20px;}
-    .modal-content{background:#111;padding:28px;border-radius:16px;width:100%;max-width:440px;text-align:center;position:relative;box-shadow:0 0 35px rgba(58,134,255,.35);}
-    .close-modal{position:absolute;top:10px;right:15px;background:none;border:none;color:#aaa;font-size:28px;cursor:pointer;}
-    .modal h2{margin-bottom:18px;color:#fff;font-size:24px;}
-    .modal .details{background:#1a1a1a;padding:14px;border-radius:8px;margin-bottom:18px;text-align:left;}
+    .modal{
+      display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,.92);align-items:center;justify-content:center;
+      z-index:3000;padding:20px;
+    }
+    .modal-content{
+      background:#111;padding:28px;border-radius:16px;
+      width:100%;max-width:440px;text-align:center;position:relative;
+      box-shadow:0 0 35px rgba(58,134,255,.35);border:1px solid rgba(58,134,255,0.2);
+    }
+    .close-modal{
+      position:absolute;top:10px;right:15px;background:none;border:none;
+      color:#aaa;font-size:28px;cursor:pointer;transition:.3s;
+    }
+    .close-modal:hover{color:#fff;}
+    .modal h2{
+      margin-bottom:18px;color:#fff;font-size:24px;
+    }
+    .modal .details{
+      background:#1a1a1a;padding:14px;border-radius:8px;
+      margin-bottom:18px;text-align:left;border:1px solid rgba(255,255,255,0.1);
+    }
     .modal .details p{margin:6px 0;color:#ccc;font-size:15px;}
-    .card-number{margin:18px 0;font-size:18px;letter-spacing:2px;background:#2d2d2d;padding:12px;border-radius:8px;font-family:monospace;}
-    .telegram-box{margin:18px 0;padding:15px;border:1px solid #3a86ff;border-radius:8px;background:rgba(58,134,255,.08);color:#fff;font-size:15px;}
-    .telegram-box a{color:#3a86ff;text-decoration:none;font-weight:bold;}
-    .confirm-payment{background:#10b981;color:#fff;padding:14px;width:100%;border:none;border-radius:8px;font-weight:bold;cursor:pointer;transition:.3s;}
-    .confirm-payment:hover{background:#059669;}
-
+    .card-number{
+      margin:18px 0;font-size:18px;letter-spacing:2px;background:#2d2d2d;
+      padding:12px;border-radius:8px;font-family:monospace;color:#3a86ff;
+    }
+    .telegram-box{
+      margin:18px 0;padding:15px;border:1px solid #3a86ff;
+      border-radius:8px;background:rgba(58,134,255,.08);
+      color:#fff;font-size:15px;
+    }
+    .telegram-box a{
+      color:#3a86ff;text-decoration:none;font-weight:bold;
+    }
+    .confirm-payment{
+      background:linear-gradient(45deg, #10b981, #06d6a0);color:#fff;
+      padding:14px;width:100%;border:none;border-radius:8px;
+      font-weight:bold;cursor:pointer;transition:.3s;
+    }
+    .confirm-payment:hover{
+      background:linear-gradient(45deg, #059669, #04a777);
+      box-shadow:0 4px 10px rgba(16,185,129,0.4);
+    }
+    
     /* Уведомление */
-    .notification {position:fixed;bottom:20px;right:20px;background:#1a1a1a;color:#fff;padding:18px 22px;border-radius:10px;box-shadow:0 0 20px rgba(58,134,255,.5);display:none;font-size:15px;}
-    .notification.show {display:block;animation:fadeInOut 4s forwards;}
-    @keyframes fadeInOut {0%{opacity:0;transform:translateY(20px);}10%{opacity:1;transform:translateY(0);}90%{opacity:1;}100%{opacity:0;transform:translateY(20px);}}
-
+    .notification {
+      position:fixed;bottom:20px;right:20px;background:#1a1a1a;
+      color:#fff;padding:18px 22px;border-radius:10px;
+      box-shadow:0 0 20px rgba(58,134,255,.5);display:none;
+      font-size:15px;border:1px solid rgba(58,134,255,0.3);
+      z-index:2000;
+    }
+    .notification.show {
+      display:block;animation:fadeInOut 4s forwards;
+    }
+    @keyframes fadeInOut {
+      0%{opacity:0;transform:translateY(20px);}
+      10%{opacity:1;transform:translateY(0);}
+      90%{opacity:1;}
+      100%{opacity:0;transform:translateY(20px);}
+    }
+    
     /* Адаптивность */
-    @media(max-width:600px){
+    @media(max-width:768px){
+      .nickname-reveal{font-size:2.8rem;letter-spacing:3px;}
+      .tagline{font-size:1.1rem;}
       .hero h2{font-size:32px;}
       .hero p{font-size:16px;}
       .section-title{font-size:26px;}
+      .courses-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body class="hidden">
-  <!-- Загрузочный экран -->
+  <!-- Загрузочный экран с белым текстом на черном фоне -->
   <div class="preloader" id="preloader">
-    <div class="elevator-wrap">
-      <div class="elevator-line"><div class="cab"></div></div>
-      <div class="elevator-line"><div class="cab"></div></div>
-      <div class="elevator-line"><div class="cab"></div></div>
-    </div>
-    <h1>Toshdeluxe</h1>
-    <div class="welcome">Добро пожаловать!</div>
+    <div class="nickname-reveal">Toshdeluxe</div>
+    <div class="tagline">Эксклюзивные курсы для профессионалов</div>
+    <div class="loading-bar"><div class="loading-progress"></div></div>
   </div>
 
   <header id="header">
@@ -119,8 +239,8 @@
   </header>
 
   <section class="hero" id="home">
-    <h2>Добро пожаловать в Toshdeluxe</h2>
-    <p>Лучшие курсы по разведке открытых источников</p>
+    <h2>Эксклюзивные курсы от Toshdeluxe</h2>
+    <p>Профессиональные материалы по OSINT, кибербезопасности и аналитике</p>
     <button class="btn btn-primary" onclick="scrollToSection('courses')">Смотреть курсы</button>
   </section>
 
@@ -129,27 +249,75 @@
     <div class="courses-grid">
       <div class="course-card">
         <h3 class="course-title">OSINT для начинающих</h3>
-        <p>Основы разведки открытых источников.</p>
-        <div class="course-price">15$</div>
-        <button class="add-to-cart" data-course="OSINT для начинающих" data-price="15">Купить</button>
+        <p class="course-desc">Основы разведки открытых источников.</p>
+        <div class="course-price">1500₽</div>
+        <button class="add-to-cart" data-course="OSINT для начинающих" data-price="1500">Купить</button>
       </div>
       <div class="course-card">
         <h3 class="course-title">Соцсети в OSINT</h3>
-        <p>Методы анализа социальных сетей.</p>
-        <div class="course-price">10$</div>
-        <button class="add-to-cart" data-course="Соцсети в OSINT" data-price="10">Купить</button>
+        <p class="course-desc">Методы анализа социальных сетей.</p>
+        <div class="course-price">1000₽</div>
+        <button class="add-to-cart" data-course="Соцсети в OSINT" data-price="1000">Купить</button>
       </div>
       <div class="course-card">
         <h3 class="course-title">Кибер-расследования</h3>
-        <p>Продвинутые методы анализа цифровых следов.</p>
-        <div class="course-price">20$</div>
-        <button class="add-to-cart" data-course="Кибер-расследования" data-price="20">Купить</button>
+        <p class="course-desc">Продвинутые методы анализа цифровых следов.</p>
+        <div class="course-price">2000₽</div>
+        <button class="add-to-cart" data-course="Кибер-расследования" data-price="2000">Купить</button>
       </div>
       <div class="course-card">
         <h3 class="course-title">Анализ соц. сетей</h3>
-        <p>Глубокий анализ соцсетей для OSINT.</p>
-        <div class="course-price">10$</div>
-        <button class="add-to-cart" data-course="Анализ соц. сетей" data-price="10">Купить</button>
+        <p class="course-desc">Глубокий анализ соцсетей для OSINT.</p>
+        <div class="course-price">1000₽</div>
+        <button class="add-to-cart" data-course="Анализ соц. сетей" data-price="1000">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">Фулл обучение</h3>
+        <p class="course-desc">Полный курс по всем направлениям.</p>
+        <div class="course-price">2000₽</div>
+        <button class="add-to-cart" data-course="Фулл обучение" data-price="2000">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">Медиум (12 каст любых)</h3>
+        <p class="course-desc">12 любых кастов на выбор.</p>
+        <div class="course-price">1000₽</div>
+        <button class="add-to-cart" data-course="Медиум (12 каст любых)" data-price="1000">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">Лайт (6 каст любых)</h3>
+        <p class="course-desc">6 любых кастов на выбор.</p>
+        <div class="course-price">500₽</div>
+        <button class="add-to-cart" data-course="Лайт (6 каст любых)" data-price="500">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">Деф по дику</h3>
+        <p class="course-desc">Защита от дикпиков и компромата.</p>
+        <div class="course-price">1000₽</div>
+        <button class="add-to-cart" data-course="Деф по дику" data-price="1000">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">Анализ крипто кошельков</h3>
+        <p class="course-desc">Методы анализа криптовалютных кошельков.</p>
+        <div class="course-price">3000₽</div>
+        <button class="add-to-cart" data-course="Анализ крипто кошельков" data-price="3000">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">DDoS атака</h3>
+        <p class="course-desc">Изучение методов DDoS атак и защиты от них.</p>
+        <div class="course-price">1500₽</div>
+        <button class="add-to-cart" data-course="DDoS атака" data-price="1500">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">Python для разведки</h3>
+        <p class="course-desc">Применение Python в OSINT и киберразведке.</p>
+        <div class="course-price">1500₽</div>
+        <button class="add-to-cart" data-course="Python для разведки" data-price="1500">Купить</button>
+      </div>
+      <div class="course-card">
+        <h3 class="course-title">Анонимность в сети</h3>
+        <p class="course-desc">Методы сохранения анонимности в интернете.</p>
+        <div class="course-price">1200₽</div>
+        <button class="add-to-cart" data-course="Анонимность в сети" data-price="1200">Купить</button>
       </div>
     </div>
   </section>
@@ -193,7 +361,7 @@
           document.querySelector('.hero').classList.add('show');
           document.querySelector('.courses').classList.add('show');
         },1000);
-      },2500);
+      },3000);
     });
 
     const modal=document.getElementById('payment-modal');
@@ -207,7 +375,7 @@
     document.querySelectorAll('.add-to-cart').forEach(btn=>{
       btn.addEventListener('click',()=>{
         modalCourseName.textContent=btn.getAttribute('data-course');
-        modalCoursePrice.textContent=btn.getAttribute('data-price')+"$";
+        modalCoursePrice.textContent=btn.getAttribute('data-price')+"₽";
         modal.style.display='flex';
       });
     });
@@ -222,6 +390,5 @@
 
     function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
   </script>
-
-
-</body></html>
+</body>
+</html>
